@@ -12,6 +12,9 @@ Route::apiResource('/users', UserController::class);
 
 Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index']);
 Route::post('/usuario', [App\Http\Controllers\UsuarioController::class, 'store']);
+Route::get('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'show']);
+Route::put('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'update']);
+Route::delete('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'delete']);
 
 Route::get('/', function () {
     return response()->json([
