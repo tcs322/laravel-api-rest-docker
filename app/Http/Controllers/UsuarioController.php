@@ -37,7 +37,7 @@ class UsuarioController extends Controller
     public function update(string $id, UsuarioUpdateRequest $request)
     {
         $usuario = Usuario::where('id', $id)->firstOrFail();
-        $data = $request->all();
+        $data = $request->validated();
 
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
