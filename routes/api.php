@@ -11,6 +11,7 @@ Route::apiResource('/users', UserController::class);
 // Route::post('/users', [UserController::class, 'store']);
 
 Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index']);
+Route::post('/usuario', [App\Http\Controllers\UsuarioController::class, 'store']);
 
 Route::get('/', function () {
     return response()->json([
