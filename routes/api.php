@@ -10,11 +10,16 @@ Route::apiResource('/users', UserController::class);
 // Route::get('/users', [UserController::class, 'index']);
 // Route::post('/users', [UserController::class, 'store']);
 
-Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index']);
+Route::post('/login', [App\Http\Controllers\Api\Auth\AuthController::class, 'auth']);
+
 Route::post('/usuario', [App\Http\Controllers\UsuarioController::class, 'store']);
 Route::get('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'show']);
 Route::put('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'update']);
-Route::delete('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'delete']);
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::delete('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'delete']);
+    Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index']);    
+});
 
 Route::get('/', function () {
     return response()->json([
