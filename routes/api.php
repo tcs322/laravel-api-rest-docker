@@ -18,7 +18,7 @@ Route::put('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'upd
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/usuario/{id}', [App\Http\Controllers\UsuarioController::class, 'delete']);
-    Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index']);    
+    Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index']);
 });
 
 Route::get('/', function () {
